@@ -21,7 +21,8 @@ def pvp_mode(player1_candy, player2_candy):
 				if candy == 0:
 					player1_candy = player1_candy + player2_candy
 					print(f"ПЕРВЫЙ ИГРОК ПОБЕДИЛ!\nС количеством конфет: {player1_candy}")
-					print("Игра окончена! Нажмите ENTER для выхода!")
+					print("Игра окончена!")
+					return
 		take2_candy = int(input('ВТОРОЙ игрок берет ? кофет: '))
 		while take2_candy <= 0 or take2_candy > 28:
 			print('Брать можно только от 0 до 28 конфет!')
@@ -38,7 +39,8 @@ def pvp_mode(player1_candy, player2_candy):
 				if candy == 0:
 					player2_candy = player2_candy + player1_candy
 					print(f"ВТОРОЙ ИГРОК ПОБЕДИЛ!\nС количеством конфет: {player2_candy}")
-					print("Игра окончена! Нажмите ENTER для выхода!")
+					print("Игра окончена!")
+					return
 
 
 def pve_mode(comp_candy, player_candy):
@@ -56,7 +58,8 @@ def pve_mode(comp_candy, player_candy):
 		if candy == 0:
 			player1_candy = comp_candy + player_candy
 			print(f"КОМПЬЮТЕР ПОБЕДИЛ!\nС количеством конфет: {player1_candy}")
-			print("Игра окончена! Нажмите ENTER для выхода!")
+			print("Игра окончена!")
+			return
 		take2_candy = int(input('ИГРОК берет ? кофет: '))
 		while take2_candy <= 0 or take2_candy > 28:
 			print('Брать можно только от 0 до 28 конфет!')
@@ -73,18 +76,22 @@ def pve_mode(comp_candy, player_candy):
 				if candy == 0:
 					player_candy = player_candy + comp_candy
 					print(f"ИГРОК ПОБЕДИЛ!\nС количеством конфет: {player_candy}")
-					print("Игра окончена! Нажмите ENTER для выхода!")
+					print("Игра окончена!")
+					return
 
 
-mode = int(input('Выбери режим игры:\n1 - Против другого игрока\n2 - Против компьютера\nВыбор: '))
+def mode_sel(mode):
+	if mode == 1:
+		player1_candy = 0
+		player2_candy = 0
+		pvp_mode(player1_candy, player2_candy)
+	elif mode == 2:
+		comp_candy = 0
+		player_candy = 0
+		pve_mode(comp_candy, player_candy)
+	else:
+		print("Нет такого режима!")
 
-if mode == 1:
-	player1_candy = 0
-	player2_candy = 0
-	pvp_mode(player1_candy, player2_candy)
-elif mode == 2:
-	comp_candy = 0
-	player_candy = 0
-	pve_mode(comp_candy, player_candy)
-else:
-	print("Нет такого режима!")
+
+modesel = int(input('Выбери режим игры:\n1 - Против другого игрока\n2 - Против компьютера\nВыбор: '))
+mode_sel(modesel)
