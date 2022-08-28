@@ -18,12 +18,12 @@ def take_input(player_token):
         except:
             print("Вводить нужно числа от 1 до 9.")
             continue
-        if player_answer >= 1 and player_answer <= 9:
-            if(str(board[player_answer-1]) not in "XO"):
-               board[player_answer-1] = player_token
-               valid = True
+        if 1 <= player_answer <= 9:
+            if str(board[player_answer-1]) not in "XO":
+                board[player_answer-1] = player_token
+                valid = True
             else:
-               print("Эта клетка уже занята!")
+                print("Эта клетка уже занята!")
         else:
             print("Вводить нужно числа от 1 до 9.")
 
